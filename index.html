@@ -1,80 +1,1130 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Zidna | Toko Sembako</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sembako Murah Sejahtera - Your trusted online grocery store with affordable prices, complete products, and fast delivery.">
+    <title>Sembako Murah Sejahtera - Online Grocery Store</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom CSS for elements that need more styling */
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .cart-item {
+            transition: all 0.3s ease;
+        }
+        
+        .cart-item:hover {
+            background-color: #f8f9fa;
+        }
+        
+        .receipt {
+            font-family: 'Courier New', monospace;
+        }
+        
+        .whatsapp-btn:hover {
+            background-color: #25D366;
+            color: white;
+        }
+        
+        /* Animation for cart counter */
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-10px);}
+            60% {transform: translateY(-5px);}
+        }
+        
+        .bounce {
+            animation: bounce 0.5s;
+        }
+    </style>
 </head>
-<body>
-
-  <!-- Header -->
-  <header>
-    <h1>Toko Sembako Zidna</h1>
-    <nav>
-      <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#features">Features</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#testimonials">Reviews</a></li>
-        <li><a href="#cta">Get Started</a></li>
-      </ul>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-green-600 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <i class="fas fa-shopping-basket text-white text-2xl mr-2"></i>
+                        <span class="text-white font-bold text-xl">Sembako Murah Sejahtera</span>
+                    </div>
+                </div>
+                <div class="hidden md:ml-6 md:flex md:items-center md:space-x-8">
+                    <a href="#" class="text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-green-700 transition" id="home-link">Home</a>
+                    <a href="#" class="text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-green-700 transition" id="products-link">Products</a>
+                    <a href="#" class="text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-green-700 transition" id="cart-link">
+                        <div class="flex items-center">
+                            <i class="fas fa-shopping-cart mr-1"></i>
+                            Cart
+                            <span class="ml-1 bg-orange-500 text-white text-xs font-bold px-2 py-0.5 rounded-full" id="cart-counter">0</span>
+                        </div>
+                    </a>
+                    <a href="#" class="text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-green-700 transition" id="about-link">About Us</a>
+                    <a href="#" class="text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-green-700 transition" id="contact-link">Contact</a>
+                </div>
+                <div class="-mr-2 flex items-center md:hidden">
+                    <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-white hover:text-white hover:bg-green-700 focus:outline-none" id="mobile-menu-button">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div class="hidden md:hidden bg-green-700" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#" class="text-white block px-3 py-2 rounded-md text-base font-medium hover:bg-green-600 transition" id="mobile-home-link">Home</a>
+                <a href="#" class="text-white block px-3 py-2 rounded-md text-base font-medium hover:bg-green-600 transition" id="mobile-products-link">Products</a>
+                <a href="#" class="text-white block px-3 py-2 rounded-md text-base font-medium hover:bg-green-600 transition" id="mobile-cart-link">
+                    <div class="flex items-center">
+                        <i class="fas fa-shopping-cart mr-2"></i>
+                        Cart
+                        <span class="ml-1 bg-orange-500 text-white text-xs font-bold px-2 py-0.5 rounded-full" id="mobile-cart-counter">0</span>
+                    </div>
+                </a>
+                <a href="#" class="text-white block px-3 py-2 rounded-md text-base font-medium hover:bg-green-600 transition" id="mobile-about-link">About Us</a>
+                <a href="#" class="text-white block px-3 py-2 rounded-md text-base font-medium hover:bg-green-600 transition" id="mobile-contact-link">Contact</a>
+            </div>
+        </div>
     </nav>
-  </header>
 
-  <!-- Hero Section -->
-  <section id="hero">
-    <h2>Website Ini Dibuat Oleh Alfin.</h2>
-    <p>Ini Adalah Website Pertama Saya, Saya Akan Mengembangkannya Lagi.</p>
-    <a href="#cta">Get Started</a>
-  </section>
-  <!-- Image Showcase Section -->
-  <section id="showcase">
-    <img src="https://images.unsplash.com/photo-1749731630653-d9b3f00573ed?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDJ8Ym84alFLVGFFMFl8fGVufDB8fHx8fA%3D%3D" alt="Product showcase" />
-  </section>
+    <!-- Main Content Sections -->
+    <main>
+        <!-- Home Section -->
+        <section id="home-section" class="py-12 bg-gradient-to-r from-green-500 to-green-600 text-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="lg:grid lg:grid-cols-2 lg:gap-8 items-center">
+                    <div class="mb-8 lg:mb-0">
+                        <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl mb-4">
+                            Sembako Murah Sejahtera
+                        </h1>
+                        <p class="text-xl mb-8">
+                            Your trusted online grocery store – affordable prices, complete products, and fast delivery.
+                        </p>
+                        <button class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-6 rounded-lg text-lg transition duration-300 transform hover:scale-105" id="shop-now-btn">
+                            Shop Now <i class="fas fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1601597111158-2fceff292cdb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                             alt="Grocery items" 
+                             class="rounded-lg shadow-2xl w-full h-auto">
+                        <div class="absolute -bottom-4 -right-4 bg-white text-green-600 p-4 rounded-lg shadow-lg">
+                            <div class="text-2xl font-bold">100+</div>
+                            <div class="text-sm">Products Available</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  <!-- Features Section -->
-  <section id="features">
-    <h2>Kenapa Membuat Website Ini?</h2>
-    <ul>
-      <li>Untuk belajar HTML, CSS, Dan JavaScript Dasar.</li>
-      <li>Untuk Mempermudah Bisnis Ibu Saya.</li>
-      <li>Untuk Mengembangkan Skil Saya</li>
-    </ul>
-  </section>
+        <!-- Featured Categories -->
+        <section class="py-12 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Shop by Category</h2>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    <div class="bg-green-50 rounded-lg p-6 text-center cursor-pointer hover:bg-green-100 transition" data-category="rice">
+                        <div class="bg-green-100 w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4">
+                            <i class="fas fa-wheat-awn text-green-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-800">Rice & Grains</h3>
+                    </div>
+                    <div class="bg-orange-50 rounded-lg p-6 text-center cursor-pointer hover:bg-orange-100 transition" data-category="oil">
+                        <div class="bg-orange-100 w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4">
+                            <i class="fas fa-oil-can text-orange-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-800">Cooking Oil</h3>
+                    </div>
+                    <div class="bg-green-50 rounded-lg p-6 text-center cursor-pointer hover:bg-green-100 transition" data-category="household">
+                        <div class="bg-green-100 w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4">
+                            <i class="fas fa-broom text-green-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-800">Household</h3>
+                    </div>
+                    <div class="bg-orange-50 rounded-lg p-6 text-center cursor-pointer hover:bg-orange-100 transition" data-category="noodles">
+                        <div class="bg-orange-100 w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4">
+                            <i class="fas fa-utensils text-orange-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-800">Instant Food</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  <!-- About Section -->
-  <section id="about">
-    <h2>Apa Kegunaan Website Ini?</h2>
-    <p>Website Ini Bisa Untuk Mengelola Bisnis Dan Memberi Pengetahuan Lebih Tentang Bisnis Ini.</p>
-  </section>
+        <!-- Products Section -->
+        <section id="products-section" class="py-12 bg-gray-50 hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row justify-between items-center mb-8">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-4 md:mb-0">Our Products</h2>
+                    <div class="w-full md:w-auto flex flex-col sm:flex-row gap-4">
+                        <div class="relative">
+                            <input type="text" placeholder="Search products..." class="pl-10 pr-4 py-2 border rounded-lg w-full" id="search-input">
+                            <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
+                        </div>
+                        <select class="border rounded-lg px-4 py-2 bg-white" id="category-filter">
+                            <option value="all">All Categories</option>
+                            <option value="rice">Rice & Grains</option>
+                            <option value="oil">Cooking Oil</option>
+                            <option value="sugar">Sugar & Sweeteners</option>
+                            <option value="eggs">Eggs & Dairy</option>
+                            <option value="noodles">Instant Noodles</option>
+                            <option value="household">Household Needs</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="products-container">
+                    <!-- Products will be loaded here by JavaScript -->
+                </div>
+            </div>
+        </section>
 
-  <!-- Testimonials Section -->
-  <section id="testimonials">
-    <h2>Siapa Saja Yang Berperan Dalam Bisnis Ini?</h2>
-    <div style="max-width: 700px; margin: auto; text-align: left;">
-      <p><strong>🌟 Alfin Mubarack. – Pembuat Website</strong><br>
-      “Website Ini Masih Prototype. Saya Akan Belajar Mengembangkannya lagi”</p>
+        <!-- Cart Section -->
+        <section id="cart-section" class="py-12 bg-white hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold text-gray-800 mb-8">Your Shopping Cart</h2>
+                
+                <div class="flex flex-col lg:flex-row gap-8">
+                    <!-- Cart Items -->
+                    <div class="lg:w-2/3">
+                        <div class="bg-gray-50 rounded-lg shadow-sm p-6">
+                            <div id="cart-items-container">
+                                <div class="text-center py-8 text-gray-500" id="empty-cart-message">
+                                    <i class="fas fa-shopping-cart text-4xl mb-4 text-gray-300"></i>
+                                    <p class="text-xl">Your cart is empty</p>
+                                    <button class="mt-4 bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-lg transition" id="browse-products-btn">
+                                        Browse Products
+                                    </button>
+                                </div>
+                                <!-- Cart items will be loaded here by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Order Summary -->
+                    <div class="lg:w-1/3">
+                        <div class="bg-gray-50 rounded-lg shadow-sm p-6 sticky top-4">
+                            <h3 class="text-xl font-semibold mb-4">Order Summary</h3>
+                            
+                            <div class="space-y-4 mb-6">
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">Subtotal</span>
+                                    <span class="font-medium" id="subtotal">Rp 0</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">Delivery Fee</span>
+                                    <span class="font-medium" id="delivery-fee">Rp 10,000</span>
+                                </div>
+                                <div class="border-t border-gray-200 pt-4 flex justify-between">
+                                    <span class="font-semibold">Total</span>
+                                    <span class="font-bold text-green-600 text-lg" id="total">Rp 10,000</span>
+                                </div>
+                            </div>
+                            
+                            <button class="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-4 rounded-lg transition disabled:opacity-50" id="checkout-btn" disabled>
+                                Proceed to Checkout
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-      <p><strong>🌟 Siti Napiah. – Pengelola Bisnis</strong><br>
-      “Saya Yang Memegang Bisnis Ini. Saya Harap Website Ini Bisa Mempermudah Para Konsumen.”</p>
+        <!-- Checkout Section -->
+        <section id="checkout-section" class="py-12 bg-gray-50 hidden">
+            <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="bg-white rounded-lg shadow-sm p-6 md:p-8">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-6">Checkout</h2>
+                    
+                    <div class="mb-8">
+                        <h3 class="text-xl font-semibold mb-4">Order Items</h3>
+                        <div class="border rounded-lg divide-y" id="checkout-items-container">
+                            <!-- Order items will be loaded here by JavaScript -->
+                        </div>
+                    </div>
+                    
+                    <form id="checkout-form">
+                        <h3 class="text-xl font-semibold mb-4">Customer Information</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Full Name*</label>
+                                <input type="text" id="name" name="name" required class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500">
+                            </div>
+                            <div>
+                                <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number*</label>
+                                <input type="tel" id="phone" name="phone" required class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500">
+                            </div>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="address" class="block text-sm font-medium text-gray-700 mb-1">Delivery Address*</label>
+                            <textarea id="address" name="address" rows="3" required class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"></textarea>
+                        </div>
+                        
+                        <div class="mb-8">
+                            <h3 class="text-xl font-semibold mb-4">Payment Method</h3>
+                            <div class="space-y-3">
+                                <div class="flex items-center">
+                                    <input id="cod" name="payment" type="radio" value="Cash on Delivery" checked class="h-4 w-4 text-green-600 focus:ring-green-500 border-gray-300">
+                                    <label for="cod" class="ml-3 block text-sm font-medium text-gray-700">
+                                        Cash on Delivery (COD)
+                                    </label>
+                                </div>
+                                <div class="flex items-center">
+                                    <input id="bank-transfer" name="payment" type="radio" value="Bank Transfer" class="h-4 w-4 text-green-600 focus:ring-green-500 border-gray-300">
+                                    <label for="bank-transfer" class="ml-3 block text-sm font-medium text-gray-700">
+                                        Bank Transfer
+                                    </label>
+                                </div>
+                                <div class="flex items-center">
+                                    <input id="e-wallet" name="payment" type="radio" value="E-Wallet" class="h-4 w-4 text-green-600 focus:ring-green-500 border-gray-300">
+                                    <label for="e-wallet" class="ml-3 block text-sm font-medium text-gray-700">
+                                        E-Wallet (OVO, GoPay, DANA)
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="border-t border-gray-200 pt-6 mb-6">
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Subtotal</span>
+                                <span class="font-medium" id="checkout-subtotal">Rp 0</span>
+                            </div>
+                            <div class="flex justify-between mt-2">
+                                <span class="text-gray-600">Delivery Fee</span>
+                                <span class="font-medium" id="checkout-delivery-fee">Rp 10,000</span>
+                            </div>
+                            <div class="flex justify-between mt-4 pt-4 border-t border-gray-200">
+                                <span class="font-semibold">Total</span>
+                                <span class="font-bold text-green-600 text-lg" id="checkout-total">Rp 10,000</span>
+                            </div>
+                        </div>
+                        
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <button type="button" class="px-6 py-3 border rounded-lg font-medium text-gray-700 hover:bg-gray-50 transition" id="back-to-cart-btn">
+                                Back to Cart
+                            </button>
+                            <button type="submit" class="flex-1 bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg transition">
+                                Place Order
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
 
-      <p><strong>🌟 Ahmad Nuruddin. – CEO Bisnis</strong><br>
-      “Saya CEO Bisnis Ini. Hubungi Saya Untuk Info Lebih lanjut”</p>
-    </div>
-  </section>
+        <!-- Order Confirmation Section -->
+        <section id="order-confirmation-section" class="py-12 bg-white hidden">
+            <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="bg-green-50 rounded-lg shadow-sm p-6 md:p-8 text-center">
+                    <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-check text-green-600 text-3xl"></i>
+                    </div>
+                    <h2 class="text-3xl font-bold text-gray-800 mb-4">Order Confirmed!</h2>
+                    <p class="text-lg text-gray-600 mb-6">Thank you for your order. We've received it and will process it shortly.</p>
+                    
+                    <div class="bg-white rounded-lg shadow-xs p-6 mb-8 text-left">
+                        <div class="flex justify-between items-center mb-6">
+                            <h3 class="text-xl font-semibold">Order #<span id="order-id">12345</span></h3>
+                            <span class="bg-green-100 text-green-800 text-sm font-medium px-3 py-1 rounded-full">
+                                Processing
+                            </span>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <h4 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-2">Customer</h4>
+                                <p id="confirmation-name">John Doe</p>
+                                <p id="confirmation-phone">+62 812-3456-7890</p>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-2">Delivery</h4>
+                                <p id="confirmation-address">123 Main St, Jakarta, Indonesia</p>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <h4 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-2">Payment</h4>
+                            <p id="confirmation-payment">Cash on Delivery (COD)</p>
+                            <p class="text-sm text-gray-500 mt-1" id="payment-instruction"></p>
+                        </div>
+                        
+                        <div class="border-t border-gray-200 pt-6">
+                            <h4 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-4">Order Summary</h4>
+                            <div id="confirmation-items-container">
+                                <!-- Order items will be loaded here by JavaScript -->
+                            </div>
+                            <div class="border-t border-gray-200 pt-4 flex justify-between">
+                                <span class="font-semibold">Total</span>
+                                <span class="font-bold text-green-600 text-lg" id="confirmation-total">Rp 85,000</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex flex-col sm:flex-row justify-center gap-4">
+                        <button class="px-6 py-3 border rounded-lg font-medium text-gray-700 hover:bg-gray-50 transition" id="print-receipt-btn">
+                            <i class="fas fa-print mr-2"></i> Print Receipt
+                        </button>
+                        <button class="px-6 py-3 bg-green-600 hover:bg-green-700 text-white font-medium rounded-lg transition" id="whatsapp-receipt-btn">
+                            <i class="fab fa-whatsapp mr-2"></i> Send via WhatsApp
+                        </button>
+                        <button class="px-6 py-3 bg-orange-500 hover:bg-orange-600 text-white font-medium rounded-lg transition" id="new-order-btn">
+                            <i class="fas fa-plus mr-2"></i> New Order
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  <!-- Call to Action -->
-  <section id="cta">
-    <h2>Mulai Explore</h2>
-    <p>Klik Tombol Dibawah Ini Untuk Explore!</p>
-    <button onclick="alert('Segera Datang!')">Get Started</button>
-  </section>
+        <!-- About Us Section -->
+        <section id="about-section" class="py-12 bg-white hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="lg:grid lg:grid-cols-2 lg:gap-12 items-center">
+                    <div class="mb-8 lg:mb-0">
+                        <h2 class="text-3xl font-bold text-gray-800 mb-6">About Sembako Murah Sejahtera</h2>
+                        <p class="text-gray-600 mb-4">
+                            Founded in 2015, Sembako Murah Sejahtera started as a small neighborhood grocery store with a simple mission: to provide affordable daily necessities to our community.
+                        </p>
+                        <p class="text-gray-600 mb-4">
+                            Over the years, we've grown into a trusted online grocery platform, serving thousands of customers across the region with the same commitment to quality and affordability.
+                        </p>
+                        <p class="text-gray-600 mb-6">
+                            Our team of dedicated professionals works tirelessly to ensure you get the best products at the best prices, delivered right to your doorstep.
+                        </p>
+                        <div class="flex flex-wrap gap-4">
+                            <div class="bg-green-50 px-4 py-3 rounded-lg">
+                                <div class="text-green-600 font-bold text-2xl">8+</div>
+                                <div class="text-gray-600 text-sm">Years in Business</div>
+                            </div>
+                            <div class="bg-orange-50 px-4 py-3 rounded-lg">
+                                <div class="text-orange-600 font-bold text-2xl">10K+</div>
+                                <div class="text-gray-600 text-sm">Happy Customers</div>
+                            </div>
+                            <div class="bg-green-50 px-4 py-3 rounded-lg">
+                                <div class="text-green-600 font-bold text-2xl">100+</div>
+                                <div class="text-gray-600 text-sm">Products Available</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                             alt="Our store" 
+                             class="rounded-lg shadow-lg w-full h-auto">
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 Toko Sembako Zidna. | Made by Alfin 🚀</p>
-  </footer>
+        <!-- Contact Section -->
+        <section id="contact-section" class="py-12 bg-gray-50 hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Contact Us</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4">Get in Touch</h3>
+                        <p class="text-gray-600 mb-6">
+                            Have questions or need assistance with your order? Our customer service team is here to help.
+                        </p>
+                        
+                        <div class="space-y-4 mb-8">
+                            <div class="flex items-start">
+                                <div class="bg-green-100 p-3 rounded-lg mr-4">
+                                    <i class="fas fa-map-marker-alt text-green-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-800">Our Store</h4>
+                                    <p class="text-gray-600">Jl. Raya Kebon Jeruk No. 123, West Jakarta, Indonesia</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="bg-green-100 p-3 rounded-lg mr-4">
+                                    <i class="fas fa-phone-alt text-green-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-800">Call Us</h4>
+                                    <p class="text-gray-600">+62 21 1234 5678</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="bg-green-100 p-3 rounded-lg mr-4">
+                                    <i class="fas fa-envelope text-green-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-800">Email Us</h4>
+                                    <p class="text-gray-600">hello@sembakomurah.com</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <h4 class="font-medium text-gray-800 mb-3">Business Hours</h4>
+                            <div class="bg-white rounded-lg shadow-xs p-4">
+                                <div class="flex justify-between py-2 border-b border-gray-100">
+                                    <span class="text-gray-600">Monday - Friday</span>
+                                    <span class="font-medium">8:00 AM - 8:00 PM</span>
+                                </div>
+                                <div class="flex justify-between py-2 border-b border-gray-100">
+                                    <span class="text-gray-600">Saturday</span>
+                                    <span class="font-medium">9:00 AM - 6:00 PM</span>
+                                </div>
+                                <div class="flex justify-between py-2">
+                                    <span class="text-gray-600">Sunday</span>
+                                    <span class="font-medium">10:00 AM - 4:00 PM</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <a href="https://wa.me/6281234567890" class="inline-flex items-center px-6 py-3 border border-green-600 rounded-lg text-green-600 font-medium hover:bg-green-600 hover:text-white transition whatsapp-btn">
+                            <i class="fab fa-whatsapp mr-2 text-lg"></i> Chat on WhatsApp
+                        </a>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4">Send Us a Message</h3>
+                        <form id="contact-form" class="space-y-4">
+                            <div>
+                                <label for="contact-name" class="block text-sm font-medium text-gray-700 mb-1">Your Name*</label>
+                                <input type="text" id="contact-name" name="name" required class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500">
+                            </div>
+                            <div>
+                                <label for="contact-email" class="block text-sm font-medium text-gray-700 mb-1">Email Address*</label>
+                                <input type="email" id="contact-email" name="email" required class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500">
+                            </div>
+                            <div>
+                                <label for="contact-phone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
+                                <input type="tel" id="contact-phone" name="phone" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500">
+                            </div>
+                            <div>
+                                <label for="contact-message" class="block text-sm font-medium text-gray-700 mb-1">Message*</label>
+                                <textarea id="contact-message" name="message" rows="4" required class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white font-medium py-3 px-6 rounded-lg transition">
+                                Send Message
+                            </button>
+                        </form>
+                        
+                        <div class="mt-8 h-64 bg-gray-200 rounded-lg overflow-hidden">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.521260322283!2d106.85412531529447!3d-6.208990395493371!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f44a495d4b3d%3A0x137fc9f7d1c291ca!2sJl.%20Raya%20Kebon%20Jeruk%20No.123%2C%20RT.1%2FRW.9%2C%20Kb.%20Jeruk%2C%20Kec.%20Kb.%20Jeruk%2C%20Kota%20Jakarta%20Barat%2C%20Daerah%20Khusus%20Ibukota%20Jakarta%2011530!5e0!3m2!1sen!2sid!4v1621234567890!5m2!1sen!2sid" 
+                                    width="100%" 
+                                    height="100%" 
+                                    style="border:0;" 
+                                    allowfullscreen="" 
+                                    loading="lazy"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white pt-12 pb-6">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Sembako Murah Sejahtera</h3>
+                    <p class="text-gray-400">
+                        Your trusted online grocery store – affordable prices, complete products, and fast delivery.
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Home</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Products</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">About Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Customer Service</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">FAQs</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Shipping Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Return Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Connect With Us</h3>
+                    <div class="flex space-x-4 mb-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                    <p class="text-gray-400">Subscribe to our newsletter</p>
+                    <div class="mt-2 flex">
+                        <input type="email" placeholder="Your email" class="px-4 py-2 rounded-l-lg text-gray-800 w-full">
+                        <button class="bg-orange-500 hover:bg-orange-600 px-4 py-2 rounded-r-lg">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 pt-6 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm mb-4 md:mb-0">
+                    &copy; 2023 Sembako Murah Sejahtera. All rights reserved.
+                </p>
+                <div class="flex space-x-6">
+                    <img src="https://via.placeholder.com/40x25?text=VISA" alt="Visa" class="h-6">
+                    <img src="https://via.placeholder.com/40x25?text=MC" alt="Mastercard" class="h-6">
+                    <img src="https://via.placeholder.com/40x25?text=GOPAY" alt="GoPay" class="h-6">
+                    <img src="https://via.placeholder.com/40x25?text=OVO" alt="OVO" class="h-6">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Sample product data
+        const products = [
+            { id: 1, name: "Premium Rice 5kg", price: 65000, category: "rice", stock: 50, image: "https://images.unsplash.com/photo-1603732551658-5fabbafa84eb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" },
+            { id: 2, name: "Sunflower Oil 2L", price: 35000, category: "oil", stock: 30, image: "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" },
+            { id: 3, name: "White Sugar 1kg", price: 15000, category: "sugar", stock: 40, image: "https://images.unsplash.com/photo-1589927986089-35812388d1b4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" },
+            { id: 4, name: "Fresh Eggs 10pcs", price: 22000, category: "eggs", stock: 25, image: "https://images.unsplash.com/photo-1587486913049-53fc88980edc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" },
+            { id: 5, name: "Indomie Goreng 1pc", price: 3000, category: "noodles", stock: 100, image: "https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" },
+            { id: 6, name: "Detergent Powder 1kg", price: 18000, category: "household", stock: 20, image: "https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" },
+            { id: 7, name: "Jasmine Rice 5kg", price: 75000, category: "rice", stock: 35, image: "https://images.unsplash.com/photo-1547496502-affa22d38842?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1373&q=80" },
+            { id: 8, name: "Palm Oil 1L", price: 18000, category: "oil", stock: 45, image: "https://images.unsplash.com/photo-1631452771675-1af3d64ebd1e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" },
+            { id: 9, name: "Brown Sugar 500g", price: 12000, category: "sugar", stock: 15, image: "https://images.unsplash.com/photo-1550583720-4fb31ffc5043?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" },
+            { id: 10, name: "Quail Eggs 20pcs", price: 15000, category: "eggs", stock: 18, image: "https://images.unsplash.com/photo-1633617474775-b5a510561ad3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" },
+            { id: 11, name: "Mie Sedap Goreng 1pc", price: 2800, category: "noodles", stock: 80, image: "https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" },
+            { id: 12, name: "Dish Soap 500ml", price: 12000, category: "household", stock: 22, image: "https://images.unsplash.com/photo-1584304988063-a9a5a6683d0e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" }
+        ];
+
+        // Shopping cart
+        let cart = [];
+        const deliveryFee = 10000;
+
+        // DOM elements
+        const homeSection = document.getElementById('home-section');
+        const productsSection = document.getElementById('products-section');
+        const cartSection = document.getElementById('cart-section');
+        const checkoutSection = document.getElementById('checkout-section');
+        const orderConfirmationSection = document.getElementById('order-confirmation-section');
+        const aboutSection = document.getElementById('about-section');
+        const contactSection = document.getElementById('contact-section');
+        
+        const productsContainer = document.getElementById('products-container');
+        const cartItemsContainer = document.getElementById('cart-items-container');
+        const emptyCartMessage = document.getElementById('empty-cart-message');
+        const checkoutItemsContainer = document.getElementById('checkout-items-container');
+        const confirmationItemsContainer = document.getElementById('confirmation-items-container');
+        
+        const cartCounter = document.getElementById('cart-counter');
+        const mobileCartCounter = document.getElementById('mobile-cart-counter');
+        const subtotalElement = document.getElementById('subtotal');
+        const totalElement = document.getElementById('total');
+        const checkoutSubtotal = document.getElementById('checkout-subtotal');
+        const checkoutTotal = document.getElementById('checkout-total');
+        const confirmationTotal = document.getElementById('confirmation-total');
+        
+        const checkoutBtn = document.getElementById('checkout-btn');
+        const browseProductsBtn = document.getElementById('browse-products-btn');
+        const backToCartBtn = document.getElementById('back-to-cart-btn');
+        const shopNowBtn = document.getElementById('shop-now-btn');
+        const newOrderBtn = document.getElementById('new-order-btn');
+        const printReceiptBtn = document.getElementById('print-receipt-btn');
+        const whatsappReceiptBtn = document.getElementById('whatsapp-receipt-btn');
+        
+        const searchInput = document.getElementById('search-input');
+        const categoryFilter = document.getElementById('category-filter');
+        
+        const checkoutForm = document.getElementById('checkout-form');
+        const contactForm = document.getElementById('contact-form');
+        
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        // Navigation links
+        const navLinks = {
+            home: ['home-link', 'mobile-home-link'],
+            products: ['products-link', 'mobile-products-link'],
+            cart: ['cart-link', 'mobile-cart-link'],
+            about: ['about-link', 'mobile-about-link'],
+            contact: ['contact-link', 'mobile-contact-link']
+        };
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', () => {
+            showSection('home');
+            renderProducts(products);
+            updateCartCounter();
+            
+            // Add event listeners for navigation
+            Object.keys(navLinks).forEach(section => {
+                navLinks[section].forEach(linkId => {
+                    document.getElementById(linkId).addEventListener('click', (e) => {
+                        e.preventDefault();
+                        showSection(section);
+                    });
+                });
+            });
+            
+            // Mobile menu toggle
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            // Category buttons
+            document.querySelectorAll('[data-category]').forEach(button => {
+                button.addEventListener('click', () => {
+                    showSection('products');
+                    categoryFilter.value = button.dataset.category;
+                    filterProducts();
+                });
+            });
+            
+            // Search and filter
+            searchInput.addEventListener('input', filterProducts);
+            categoryFilter.addEventListener('change', filterProducts);
+            
+            // Shop now button
+            shopNowBtn.addEventListener('click', () => {
+                showSection('products');
+            });
+            
+            // Browse products button
+            browseProductsBtn.addEventListener('click', () => {
+                showSection('products');
+            });
+            
+            // Checkout button
+            checkoutBtn.addEventListener('click', () => {
+                showSection('checkout');
+                renderCheckoutItems();
+            });
+            
+            // Back to cart button
+            backToCartBtn.addEventListener('click', () => {
+                showSection('cart');
+            });
+            
+            // New order button
+            newOrderBtn.addEventListener('click', () => {
+                showSection('products');
+            });
+            
+            // Print receipt button
+            printReceiptBtn.addEventListener('click', () => {
+                alert('Receipt printing functionality would be implemented here');
+                // In a real app, this would generate a PDF receipt
+            });
+            
+            // WhatsApp receipt button
+            whatsappReceiptBtn.addEventListener('click', () => {
+                alert('WhatsApp sharing functionality would be implemented here');
+                // In a real app, this would share the receipt via WhatsApp
+            });
+            
+            // Checkout form submission
+            checkoutForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                processOrder();
+            });
+            
+            // Contact form submission
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                alert('Thank you for your message! We will get back to you soon.');
+                contactForm.reset();
+            });
+        });
+        
+        // Show the selected section and hide others
+        function showSection(section) {
+            // Hide all sections
+            homeSection.classList.add('hidden');
+            productsSection.classList.add('hidden');
+            cartSection.classList.add('hidden');
+            checkoutSection.classList.add('hidden');
+            orderConfirmationSection.classList.add('hidden');
+            aboutSection.classList.add('hidden');
+            contactSection.classList.add('hidden');
+            
+            // Show the selected section
+            switch(section) {
+                case 'home':
+                    homeSection.classList.remove('hidden');
+                    break;
+                case 'products':
+                    productsSection.classList.remove('hidden');
+                    break;
+                case 'cart':
+                    cartSection.classList.remove('hidden');
+                    break;
+                case 'checkout':
+                    checkoutSection.classList.remove('hidden');
+                    break;
+                case 'order-confirmation':
+                    orderConfirmationSection.classList.remove('hidden');
+                    break;
+                case 'about':
+                    aboutSection.classList.remove('hidden');
+                    break;
+                case 'contact':
+                    contactSection.classList.remove('hidden');
+                    break;
+            }
+            
+            // Close mobile menu if open
+            mobileMenu.classList.add('hidden');
+        }
+        
+        // Render products to the page
+        function renderProducts(productsToRender) {
+            productsContainer.innerHTML = '';
+            
+            if (productsToRender.length === 0) {
+                productsContainer.innerHTML = `
+                    <div class="col-span-full text-center py-12">
+                        <i class="fas fa-search text-4xl text-gray-300 mb-4"></i>
+                        <p class="text-xl text-gray-500">No products found</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            productsToRender.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'bg-white rounded-lg shadow-md overflow-hidden product-card transition duration-300';
+                productCard.innerHTML = `
+                    <div class="h-48 overflow-hidden">
+                        <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-lg mb-1">${product.name}</h3>
+                        <p class="text-green-600 font-bold text-xl mb-2">Rp ${product.price.toLocaleString()}</p>
+                        <p class="text-sm text-gray-500 mb-4">Stock: ${product.stock}</p>
+                        <button class="w-full bg-orange-500 hover:bg-orange-600 text-white font-medium py-2 px-4 rounded-lg transition add-to-cart-btn" data-id="${product.id}">
+                            Add to Cart
+                        </button>
+                    </div>
+                `;
+                productsContainer.appendChild(productCard);
+            });
+            
+            // Add event listeners to "Add to Cart" buttons
+            document.querySelectorAll('.add-to-cart-btn').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const productId = parseInt(e.target.dataset.id);
+                    addToCart(productId);
+                });
+            });
+        }
+        
+        // Filter products based on search and category
+        function filterProducts() {
+            const searchTerm = searchInput.value.toLowerCase();
+            const category = categoryFilter.value;
+            
+            let filteredProducts = products;
+            
+            // Filter by search term
+            if (searchTerm) {
+                filteredProducts = filteredProducts.filter(product => 
+                    product.name.toLowerCase().includes(searchTerm)
+                );
+            }
+            
+            // Filter by category
+            if (category !== 'all') {
+                filteredProducts = filteredProducts.filter(product => 
+                    product.category === category
+                );
+            }
+            
+            renderProducts(filteredProducts);
+        }
+        
+        // Add a product to the cart
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            
+            if (!product) return;
+            
+            // Check if product is already in cart
+            const existingItem = cart.find(item => item.id === productId);
+            
+            if (existingItem) {
+                // Increase quantity if stock allows
+                if (existingItem.quantity < product.stock) {
+                    existingItem.quantity++;
+                } else {
+                    alert(`Only ${product.stock} units of ${product.name} available in stock.`);
+                    return;
+                }
+            } else {
+                // Add new item to cart
+                cart.push({
+                    id: product.id,
+                    name: product.name,
+                    price: product.price,
+                    image: product.image,
+                    quantity: 1
+                });
+            }
+            
+            updateCartCounter();
+            animateCartButton();
+            
+            // If on cart page, update the cart display
+            if (!cartSection.classList.contains('hidden')) {
+                renderCartItems();
+            }
+            
+            // Show a success message
+            const notification = document.createElement('div');
+            notification.className = 'fixed bottom-4 right-4 bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg flex items-center';
+            notification.innerHTML = `
+                <i class="fas fa-check-circle mr-2"></i>
+                <span>${product.name} added to cart</span>
+            `;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.classList.add('opacity-0', 'transition', 'duration-500');
+                setTimeout(() => notification.remove(), 500);
+            }, 2000);
+        }
+        
+        // Update the cart counter
+        function updateCartCounter() {
+            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+            cartCounter.textContent = totalItems;
+            mobileCartCounter.textContent = totalItems;
+            
+            // Enable/disable checkout button
+            checkoutBtn.disabled = totalItems === 0;
+        }
+        
+        // Animate the cart button when items are added
+        function animateCartButton() {
+            cartCounter.classList.add('bounce');
+            mobileCartCounter.classList.add('bounce');
+            
+            setTimeout(() => {
+                cartCounter.classList.remove('bounce');
+                mobileCartCounter.classList.remove('bounce');
+            }, 500);
+        }
+        
+        // Render cart items
+        function renderCartItems() {
+            if (cart.length === 0) {
+                emptyCartMessage.classList.remove('hidden');
+                cartItemsContainer.innerHTML = '';
+                return;
+            }
+            
+            emptyCartMessage.classList.add('hidden');
+            cartItemsContainer.innerHTML = '';
+            
+            cart.forEach(item => {
+                const cartItem = document.createElement('div');
+                cartItem.className = 'flex items-center py-4 border-b border-gray-200 cart-item';
+                cartItem.innerHTML = `
+                    <div class="flex-shrink-0 w-16 h-16 rounded-lg overflow-hidden">
+                        <img src="${item.image}" alt="${item.name}" class="w-full h-full object-cover">
+                    </div>
+                    <div class="ml-4 flex-1">
+                        <h3 class="font-medium">${item.name}</h3>
+                        <p class="text-green-600 font-medium">Rp ${item.price.toLocaleString()}</p>
+                    </div>
+                    <div class="flex items-center">
+                        <button class="w-8 h-8 flex items-center justify-center border rounded-lg quantity-btn" data-id="${item.id}" data-action="decrease">
+                            <i class="fas fa-minus text-xs"></i>
+                        </button>
+                        <span class="mx-2 w-8 text-center">${item.quantity}</span>
+                        <button class="w-8 h-8 flex items-center justify-center border rounded-lg quantity-btn" data-id="${item.id}" data-action="increase">
+                            <i class="fas fa-plus text-xs"></i>
+                        </button>
+                    </div>
+                    <div class="ml-4 w-20 text-right font-medium">
+                        Rp ${(item.price * item.quantity).toLocaleString()}
+                    </div>
+                    <button class="ml-4 text-red-500 hover:text-red-700 remove-btn" data-id="${item.id}">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                `;
+                cartItemsContainer.appendChild(cartItem);
+            });
+            
+            // Calculate and display totals
+            const subtotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+            const total = subtotal + deliveryFee;
+            
+            subtotalElement.textContent = `Rp ${subtotal.toLocaleString()}`;
+            totalElement.textContent = `Rp ${total.toLocaleString()}`;
+            
+            // Add event listeners to quantity buttons
+            document.querySelectorAll('.quantity-btn').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const productId = parseInt(e.target.closest('button').dataset.id);
+                    const action = e.target.closest('button').dataset.action;
+                    updateCartItemQuantity(productId, action);
+                });
+            });
+            
+            // Add event listeners to remove buttons
+            document.querySelectorAll('.remove-btn').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const productId = parseInt(e.target.closest('button').dataset.id);
+                    removeFromCart(productId);
+                });
+            });
+        }
+        
+        // Update cart item quantity
+        function updateCartItemQuantity(productId, action) {
+            const item = cart.find(item => item.id === productId);
+            const product = products.find(p => p.id === productId);
+            
+            if (!item || !product) return;
+            
+            if (action === 'increase') {
+                if (item.quantity < product.stock) {
+                    item.quantity++;
+                } else {
+                    alert(`Only ${product.stock} units of ${product.name} available in stock.`);
+                    return;
+                }
+            } else if (action === 'decrease') {
+                if (item.quantity > 1) {
+                    item.quantity--;
+                } else {
+                    removeFromCart(productId);
+                    return;
+                }
+            }
+            
+            updateCartCounter();
+            renderCartItems();
+        }
+        
+        // Remove item from cart
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCartCounter();
+            renderCartItems();
+        }
+        
+        // Render checkout items
+        function renderCheckoutItems() {
+            checkoutItemsContainer.innerHTML = '';
+            
+            cart.forEach(item => {
+                const checkoutItem = document.createElement('div');
+                checkoutItem.className = 'flex items-center py-3 px-4';
+                checkoutItem.innerHTML = `
+                    <div class="flex-shrink-0 w-12 h-12 rounded-lg overflow-hidden">
+                        <img src="${item.image}" alt="${item.name}" class="w-full h-full object-cover">
+                    </div>
+                    <div class="ml-4 flex-1">
+                        <h3 class="font-medium">${item.name}</h3>
+                        <p class="text-gray-500 text-sm">${item.quantity} x Rp ${item.price.toLocaleString()}</p>
+                    </div>
+                    <div class="font-medium">
+                        Rp ${(item.price * item.quantity).toLocaleString()}
+                    </div>
+                `;
+                checkoutItemsContainer.appendChild(checkoutItem);
+            });
+            
+            // Calculate and display totals
+            const subtotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+            const total = subtotal + deliveryFee;
+            
+            checkoutSubtotal.textContent = `Rp ${subtotal.toLocaleString()}`;
+            checkoutTotal.textContent = `Rp ${total.toLocaleString()}`;
+        }
+        
+        // Process the order
+        function processOrder() {
+            // In a real app, this would send the order to a server
+            // For this demo, we'll just show the confirmation
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const address = document.getElementById('address').value;
+            const paymentMethod = document.querySelector('input[name="payment"]:checked').value;
+            
+            // Display order confirmation
+            document.getElementById('confirmation-name').textContent = name;
+            document.getElementById('confirmation-phone').textContent = phone;
+            document.getElementById('confirmation-address').textContent = address;
+            document.getElementById('confirmation-payment').textContent = paymentMethod;
+            
+            // Set payment instruction based on method
+            let paymentInstruction = '';
+            if (paymentMethod === 'Bank Transfer') {
+                paymentInstruction = 'Please transfer to BCA 123-456-7890 (Sembako Murah Sejahtera)';
+            } else if (paymentMethod === 'E-Wallet') {
+                paymentInstruction = 'Please send payment to our OVO/GoPay/DANA number: 0812-3456-7890';
+            } else {
+                paymentInstruction = 'Please prepare exact change for the delivery person';
+            }
+            document.getElementById('payment-instruction').textContent = paymentInstruction;
+            
+            // Generate random order ID
+            const orderId = Math.floor(10000 + Math.random() * 90000);
+            document.getElementById('order-id').textContent = orderId;
+            
+            // Render confirmation items
+            confirmationItemsContainer.innerHTML = '';
+            
+            cart.forEach(item => {
+                const confirmationItem = document.createElement('div');
+                confirmationItem.className = 'flex justify-between py-2';
+                confirmationItem.innerHTML = `
+                    <div>
+                        <span>${item.quantity}x</span>
+                        <span class="ml-2">${item.name}</span>
+                    </div>
+                    <div>Rp ${(item.price * item.quantity).toLocaleString()}</div>
+                `;
+                confirmationItemsContainer.appendChild(confirmationItem);
+            });
+            
+            // Add delivery fee
+            const deliveryItem = document.createElement('div');
+            deliveryItem.className = 'flex justify-between py-2 border-t border-gray-200';
+            deliveryItem.innerHTML = `
+                <div>Delivery Fee</div>
+                <div>Rp ${deliveryFee.toLocaleString()}</div>
+            `;
+            confirmationItemsContainer.appendChild(deliveryItem);
+            
+            // Calculate and display total
+            const subtotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+            const total = subtotal + deliveryFee;
+            confirmationTotal.textContent = `Rp ${total.toLocaleString()}`;
+            
+            // Clear the cart
+            cart = [];
+            updateCartCounter();
+            
+            // Show confirmation section
+            showSection('order-confirmation');
+        }
+    </script>
 </body>
 </html>
